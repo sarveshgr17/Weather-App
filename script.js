@@ -38,22 +38,22 @@ async function checkWeather(city) {
 
         switch (weather_data.weather[0].main) {
             case 'Clouds':
-                weather_img.src = "https://github.com/sarveshgr17/Weather-App/blob/898a80bce2ff58d645d3eeab26b2944c2a90e8b1/assets/cloud.png";
+                weather_img.src = "assets/cloud.png";
                 break;
             case 'Clear':
-                weather_img.src = "https://github.com/sarveshgr17/Weather-App/blob/898a80bce2ff58d645d3eeab26b2944c2a90e8b1/assets/clear.png";
+                weather_img.src = "assets/clear.png";
                 break;
             case 'Rain':
-                weather_img.src = "https://github.com/sarveshgr17/Weather-App/blob/898a80bce2ff58d645d3eeab26b2944c2a90e8b1/assets/rain.png";
+                weather_img.src = "assets/rain.png";
                 break;
             case 'Mist':
-                weather_img.src = "https://github.com/sarveshgr17/Weather-App/blob/898a80bce2ff58d645d3eeab26b2944c2a90e8b1/assets/mist.png";
+                weather_img.src = "assets/mist.png";
                 break;
             case 'Snow':
-                weather_img.src = "https://github.com/sarveshgr17/Weather-App/blob/898a80bce2ff58d645d3eeab26b2944c2a90e8b1/assets/snow.png";
+                weather_img.src = "assets/snow.png";
                 break;
             default:
-                weather_img.src = "https://github.com/sarveshgr17/Weather-App/blob/898a80bce2ff58d645d3eeab26b2944c2a90e8b1/assets/cloud.png";  // Fallback image
+                weather_img.src = "assets/cloud.png";  // Fallback image
         }
 
         console.log(weather_data);
