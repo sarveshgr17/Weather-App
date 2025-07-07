@@ -7,57 +7,63 @@ const humidity = document.getElementById('humidity');
 const wind_speed = document.getElementById('wind-speed');
 
 const location_not_found = document.querySelector('.location-not-found');
-
 const weather_body = document.querySelector('.weather-body');
 
+async function checkWeather(city) {
+    const api_key = "7b213ccf330c3ec9cedd7f0eb1bab610";
+    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}&units=metric`;
 
-async function checkWeather(city){
-    const api_key = "4cd0eee81294c867b4bc4cfc64e998c5";
-    const url = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${api_key}`;
-
-    const weather_data = await fetch(`${url}`).then(response => response.json());
-
-
-    if(weather_data.cod === `404`){
-        location_not_found.style.display = "flex";
-        weather_body.style.display = "none";
-        console.log("error");
+    if (!city) {
+        alert("Please enter a city name.");
         return;
     }
 
-    console.log("run");
-    location_not_found.style.display = "none";
-    weather_body.style.display = "flex";
-    temperature.innerHTML = `${Math.round(weather_data.main.temp - 273.15)}°C`;
-    description.innerHTML = `${weather_data.weather[0].description}`;
+    try {
+        const weather_data = await fetch(url).then(response => response.json());
 
-    humidity.innerHTML = `${weather_data.main.humidity}%`;
-    wind_speed.innerHTML = `${weather_data.wind.speed}Km/H`;
+        if (weather_data.cod === '404') {
+            location_not_found.style.display = "flex";
+            weather_body.style.display = "none";
+            console.log("City not found");
+            return;
+        }
 
+        location_not_found.style.display = "none";
+        weather_body.style.display = "flex";
 
-    switch(weather_data.weather[0].main){
-        case 'Clouds':
-            weather_img.src = "/assets/cloud.png";
-            break;
-        case 'Clear':
-            weather_img.src = "/assets/clear.png";
-            break;
-        case 'Rain':
-            weather_img.src = "/assets/rain.png";
-            break;
-        case 'Mist':
-            weather_img.src = "/assets/mist.png";
-            break;
-        case 'Snow':
-            weather_img.src = "/assets/snow.png";
-            break;
+        temperature.innerHTML = `${Math.round(weather_data.main.temp)}°C`;
+        description.innerHTML = `${weather_data.weather[0].description}`;
+        humidity.innerHTML = `${weather_data.main.humidity}%`;
+        wind_speed.innerHTML = `${weather_data.wind.speed} Km/h`;
 
+        switch (weather_data.weather[0].main) {
+            case 'Clouds':
+                weather_img.src = "Projects/Weather App/assets/cloud.png";
+                break;
+            case 'Clear':
+                weather_img.src = "Projects/Weather App/assets/clear.png";
+                break;
+            case 'Rain':
+                weather_img.src = "Projects/Weather App/assets/rain.png";
+                break;
+            case 'Mist':
+                weather_img.src = "Projects/Weather App/assets/mist.png";
+                break;
+            case 'Snow':
+                weather_img.src = "Projects/Weather App/assets/snow.png";
+                break;
+            default:
+                weather_img.src = "Projects/Weather App/assets/cloud.png";  // Fallback image
+        }
+
+        console.log(weather_data);
+
+    } catch (error) {
+        console.error("Error fetching weather:", error);
+        alert("Failed to fetch weather. Check your internet or API key.");
     }
-
-    console.log(weather_data);
 }
 
-
-searchBtn.addEventListener('click', ()=>{
-    checkWeather(inputBox.value);
+searchBtn.addEventListener('click', () => {
+    checkWeather(inputBox.value.trim());
 });
