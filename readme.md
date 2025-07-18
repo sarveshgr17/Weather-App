@@ -22,9 +22,11 @@ A simple and responsive weather application built with **HTML**, **CSS**, and **
 
 ---
 
-## 📷 Screenshots
+## 🌐 Live Demo
 
-*(Add screenshots here if available)*
+🚀 [Visit the Live Site](https://sarveshgr17.github.io/Weather-App/)
+
+---
 
 ---
 
