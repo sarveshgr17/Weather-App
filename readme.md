@@ -28,8 +28,6 @@ A simple and responsive weather application built with **HTML**, **CSS**, and **
 
 ---
 
----
-
 ## 🔧 Setup Instructions
 
 ### 1️⃣ Clone the Repository
