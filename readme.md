@@ -33,5 +33,5 @@ A simple and responsive weather application built with **HTML**, **CSS**, and **
 ### 1️⃣ Clone the Repository
 
 ```bash
-git clone https://github.com/your-username/weather-app.git
+git clone https://github.com/sarveshgr17/Weather-App.git
 cd weather-app
